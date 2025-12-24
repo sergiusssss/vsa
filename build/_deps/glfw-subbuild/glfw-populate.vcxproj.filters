@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\glfw-subbuild\CMakeFiles\5554d2d8ab1d58b8a0f591f938bca06a\glfw-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\glfw-subbuild\CMakeFiles\5554d2d8ab1d58b8a0f591f938bca06a\glfw-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\glfw-subbuild\CMakeFiles\5554d2d8ab1d58b8a0f591f938bca06a\glfw-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\glfw-subbuild\CMakeFiles\5554d2d8ab1d58b8a0f591f938bca06a\glfw-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\glfw-subbuild\CMakeFiles\5554d2d8ab1d58b8a0f591f938bca06a\glfw-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\glfw-subbuild\CMakeFiles\5554d2d8ab1d58b8a0f591f938bca06a\glfw-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\glfw-subbuild\CMakeFiles\5554d2d8ab1d58b8a0f591f938bca06a\glfw-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\glfw-subbuild\CMakeFiles\5554d2d8ab1d58b8a0f591f938bca06a\glfw-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\glfw-subbuild\CMakeFiles\363ea350d04e3be3d272099884eb0309\glfw-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\glfw-subbuild\CMakeFiles\31b1819f6de26fdd54080de370268eff\glfw-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\glfw-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\glfw-subbuild\CMakeFiles\glfw-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{A1084742-CAF3-3A60-968A-206B0A14F77D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

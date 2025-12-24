@@ -1,0 +1,150 @@
+^C:\USERS\STUDENT\DESKTOP\KARAGODINA\VSA\BUILD\_DEPS\LOGGER-SUBBUILD\CMAKEFILES\508B0B2606E9D3082A825DB0CD0FFC7B\LOGGER-POPULATE-MKDIR.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/logger-populate-prefix/tmp/logger-populate-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/logger-populate-prefix/src/logger-populate-stamp/Debug/logger-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\STUDENT\DESKTOP\KARAGODINA\VSA\BUILD\_DEPS\LOGGER-SUBBUILD\CMAKEFILES\508B0B2606E9D3082A825DB0CD0FFC7B\LOGGER-POPULATE-DOWNLOAD.RULE
+setlocal
+cd C:\Users\Student\Desktop\karagodina\vsa\build\_deps
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/logger-populate-prefix/tmp/logger-populate-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/logger-populate-prefix/src/logger-populate-stamp/Debug/logger-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\STUDENT\DESKTOP\KARAGODINA\VSA\BUILD\_DEPS\LOGGER-SUBBUILD\CMAKEFILES\508B0B2606E9D3082A825DB0CD0FFC7B\LOGGER-POPULATE-UPDATE.RULE
+setlocal
+cd C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/logger-populate-prefix/tmp/logger-populate-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\STUDENT\DESKTOP\KARAGODINA\VSA\BUILD\_DEPS\LOGGER-SUBBUILD\CMAKEFILES\508B0B2606E9D3082A825DB0CD0FFC7B\LOGGER-POPULATE-PATCH.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/logger-populate-prefix/src/logger-populate-stamp/Debug/logger-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\STUDENT\DESKTOP\KARAGODINA\VSA\BUILD\_DEPS\LOGGER-SUBBUILD\CMAKEFILES\508B0B2606E9D3082A825DB0CD0FFC7B\LOGGER-POPULATE-CONFIGURE.RULE
+setlocal
+cd C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/logger-populate-prefix/src/logger-populate-stamp/Debug/logger-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\STUDENT\DESKTOP\KARAGODINA\VSA\BUILD\_DEPS\LOGGER-SUBBUILD\CMAKEFILES\508B0B2606E9D3082A825DB0CD0FFC7B\LOGGER-POPULATE-BUILD.RULE
+setlocal
+cd C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/logger-populate-prefix/src/logger-populate-stamp/Debug/logger-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\STUDENT\DESKTOP\KARAGODINA\VSA\BUILD\_DEPS\LOGGER-SUBBUILD\CMAKEFILES\508B0B2606E9D3082A825DB0CD0FFC7B\LOGGER-POPULATE-INSTALL.RULE
+setlocal
+cd C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/logger-populate-prefix/src/logger-populate-stamp/Debug/logger-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\STUDENT\DESKTOP\KARAGODINA\VSA\BUILD\_DEPS\LOGGER-SUBBUILD\CMAKEFILES\508B0B2606E9D3082A825DB0CD0FFC7B\LOGGER-POPULATE-TEST.RULE
+setlocal
+cd C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/logger-populate-prefix/src/logger-populate-stamp/Debug/logger-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\STUDENT\DESKTOP\KARAGODINA\VSA\BUILD\_DEPS\LOGGER-SUBBUILD\CMAKEFILES\5262DBDA39D90116225FFBF1AA998BEB\LOGGER-POPULATE-COMPLETE.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/Debug/logger-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/logger-populate-prefix/src/logger-populate-stamp/Debug/logger-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\STUDENT\DESKTOP\KARAGODINA\VSA\BUILD\_DEPS\LOGGER-SUBBUILD\CMAKEFILES\9F56B647820E0445F3AD192643DF27B3\LOGGER-POPULATE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\STUDENT\DESKTOP\KARAGODINA\VSA\BUILD\_DEPS\LOGGER-SUBBUILD\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild -BC:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild --check-stamp-file C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

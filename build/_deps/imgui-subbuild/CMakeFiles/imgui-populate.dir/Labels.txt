@@ -1,0 +1,14 @@
+# Target labels
+ imgui-populate
+# Source files and their labels
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/imgui-subbuild/CMakeFiles/imgui-populate
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/imgui-subbuild/CMakeFiles/cffeaae64f205a901f3d59bfbe9019ca/imgui-populate.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/imgui-subbuild/CMakeFiles/cf367d5209b2aedfcddc18fa8c7cd202/imgui-populate-complete.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/imgui-subbuild/CMakeFiles/edaeb691a779e69b41b817dcd080a138/imgui-populate-build.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/imgui-subbuild/CMakeFiles/edaeb691a779e69b41b817dcd080a138/imgui-populate-configure.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/imgui-subbuild/CMakeFiles/edaeb691a779e69b41b817dcd080a138/imgui-populate-download.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/imgui-subbuild/CMakeFiles/edaeb691a779e69b41b817dcd080a138/imgui-populate-install.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/imgui-subbuild/CMakeFiles/edaeb691a779e69b41b817dcd080a138/imgui-populate-mkdir.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/imgui-subbuild/CMakeFiles/edaeb691a779e69b41b817dcd080a138/imgui-populate-patch.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/imgui-subbuild/CMakeFiles/edaeb691a779e69b41b817dcd080a138/imgui-populate-test.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/imgui-subbuild/CMakeFiles/edaeb691a779e69b41b817dcd080a138/imgui-populate-update.rule

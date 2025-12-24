@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.27)
 project(village)
 
 set(CMAKE_CXX_STANDARD 23)
@@ -57,6 +57,10 @@ add_executable(${PROJECT_NAME}
         src/village/village_builder.hpp
         src/village/village_factory.cpp
         src/village/village_factory.hpp
+        src/village/entities_registrator.cpp
+        src/village/entities_registry.cpp
+        src/village/entities_registry.hpp
+
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE src/)

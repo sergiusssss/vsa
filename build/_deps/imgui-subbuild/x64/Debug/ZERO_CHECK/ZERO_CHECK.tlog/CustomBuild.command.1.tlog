@@ -1,0 +1,10 @@
+^C:\USERS\STUDENT\DESKTOP\KARAGODINA\VSA\BUILD\_DEPS\IMGUI-SUBBUILD\CMAKEFILES\CFFEAAE64F205A901F3D59BFBE9019CA\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Student/Desktop/karagodina/vsa/build/_deps/imgui-subbuild -BC:/Users/Student/Desktop/karagodina/vsa/build/_deps/imgui-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Student/Desktop/karagodina/vsa/build/_deps/imgui-subbuild/imgui-populate.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

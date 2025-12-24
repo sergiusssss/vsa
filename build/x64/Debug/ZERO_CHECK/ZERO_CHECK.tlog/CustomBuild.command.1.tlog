@@ -1,0 +1,10 @@
+^C:\USERS\STUDENT\DESKTOP\KARAGODINA\VSA\BUILD\CMAKEFILES\E30BB7A9E10DF7048096AF390E8E83DD\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Student/Desktop/karagodina/vsa -BC:/Users/Student/Desktop/karagodina/vsa/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Student/Desktop/karagodina/vsa/build/village.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

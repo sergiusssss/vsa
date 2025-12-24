@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\village_app.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\ui\renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\tools\logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\ui\window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\ui\test_window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\simulation\simulation_controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\simulation\simulation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\simulation\simulation_config.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\simulation\simulation_data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\ui\main_window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\ui\configuration_window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\residents\resident_baker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\residents\resident_blacksmith.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\tools\tool_sickle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\tools\tool_triphammer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\village.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\storage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\materials\material_metal_ore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\materials\material_wheat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\residents\resident_miner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\dishes\dish_bread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\village_builder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\village_factory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\entities_registrator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\entities_registry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village_app.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\ui\renderer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\tools\logger.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\ui\window.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\ui\test_window.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\simulation\simulation_controller.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\simulation\simulation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\simulation\simulation_config.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\simulation\simulation_data.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\ui\main_window.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\ui\configuration_window.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\resident.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\residents\resident_baker.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\residents\resident_blacksmith.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\tool.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\tools\tool_sickle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\tools\tool_triphammer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\village.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\storage.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\material.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\materials\material_metal_ore.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\materials\material_wheat.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\residents\resident_miner.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\dishes\dish_bread.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\dish.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\village_builder.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\village_factory.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Student\Desktop\karagodina\vsa\src\village\entities_registry.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\json-src\nlohmann_json.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{C36F1D22-0542-35E8-9C3C-F96A1DA372F6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9B70FF34-C49D-3E01-BFE8-1AC477C12EAA}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,14 @@
+# Target labels
+ logger-populate
+# Source files and their labels
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/logger-populate
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/9f56b647820e0445f3ad192643df27b3/logger-populate.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/5262dbda39d90116225ffbf1aa998beb/logger-populate-complete.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-build.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-configure.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-download.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-install.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-mkdir.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-patch.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-test.rule
+C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-update.rule

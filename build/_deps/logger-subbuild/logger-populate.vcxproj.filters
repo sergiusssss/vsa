@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-subbuild\CMakeFiles\508b0b2606e9d3082a825db0cd0ffc7b\logger-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-subbuild\CMakeFiles\508b0b2606e9d3082a825db0cd0ffc7b\logger-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-subbuild\CMakeFiles\508b0b2606e9d3082a825db0cd0ffc7b\logger-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-subbuild\CMakeFiles\508b0b2606e9d3082a825db0cd0ffc7b\logger-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-subbuild\CMakeFiles\508b0b2606e9d3082a825db0cd0ffc7b\logger-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-subbuild\CMakeFiles\508b0b2606e9d3082a825db0cd0ffc7b\logger-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-subbuild\CMakeFiles\508b0b2606e9d3082a825db0cd0ffc7b\logger-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-subbuild\CMakeFiles\508b0b2606e9d3082a825db0cd0ffc7b\logger-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-subbuild\CMakeFiles\5262dbda39d90116225ffbf1aa998beb\logger-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-subbuild\CMakeFiles\9f56b647820e0445f3ad192643df27b3\logger-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Student\Desktop\karagodina\vsa\build\_deps\logger-subbuild\CMakeFiles\logger-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{C31807B9-CC8D-3372-B983-7DB74BAE0A66}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

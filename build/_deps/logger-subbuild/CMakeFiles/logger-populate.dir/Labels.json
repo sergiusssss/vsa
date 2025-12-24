@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/logger-populate"
+		},
+		{
+			"file" : "C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/9f56b647820e0445f3ad192643df27b3/logger-populate.rule"
+		},
+		{
+			"file" : "C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/5262dbda39d90116225ffbf1aa998beb/logger-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/Student/Desktop/karagodina/vsa/build/_deps/logger-subbuild/CMakeFiles/508b0b2606e9d3082a825db0cd0ffc7b/logger-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"logger-populate"
+		],
+		"name" : "logger-populate"
+	}
+}

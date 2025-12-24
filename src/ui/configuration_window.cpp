@@ -1,5 +1,10 @@
 #include "configuration_window.hpp"
 
+#include "village/entities_registry.hpp"
+#include "village/village.hpp"
+#include <village/tools/tool_sickle.hpp>
+#include <village/tools/tool_triphammer.hpp>
+
 #include <imgui.h>
 
 #include <utility>
@@ -23,6 +28,10 @@ std::size_t convert_time_to_days(const std::int32_t value, const std::int32_t un
 ConfigurationWindow::ConfigurationWindow(std::function<void(const sim::SimulationConfig&)> start_simulation)
   : m_start_simulation(std::move(start_simulation))
 {
+    const auto& eri = village::EntitiesRegistry::get_instance();
+    for (const auto& r : eri.get_residents()) {
+        m_config.residents[r.first] = sim::SimulationConfig::Resident();
+    }
 }
 
 ConfigurationWindow::~ConfigurationWindow() {}
@@ -76,6 +85,23 @@ void ConfigurationWindow::render()
                      0,
                      0,
                      1);
+    
+    ImGui::DragInt("max child",
+                     &m_config.population.initial_max_children,
+                     1,
+                     0,
+                     90);
+                     
+    ImGui::SeparatorText("Residents");
+
+    const auto& ress = village::EntitiesRegistry::get_instance().get_residents();
+    for (auto& r : m_config.residents) {
+        const auto& name = ress.at(r.first);
+        ImGui::Text("%s", name.c_str());
+        ImGui::DragFloat(("Initial percentage##" + name).c_str(), &r.second.initial_percentage, 0, 0, 1);
+        ImGui::DragFloat(("Become probability##" + name).c_str(), &r.second.become_probability, 0, 0, 1);
+    }
+
 
     ImGui::SeparatorText("Run");
 
