@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <string>
 
 #include <spdlog/spdlog.h>
@@ -61,4 +62,4 @@ VSA_LOGGER_CALL(vsa::tools::Logger::get_instance(name), vsa::tools::Logger::Leve
 VSA_LOGGER_CALL(vsa::tools::Logger::get_instance(name), vsa::tools::Logger::Level::WARNING, __VA_ARGS__);
 
 #define VSA_LOG_ERROR(name, ...) \
-VSA_LOGGER_CALL(vsa::tools::Logger::get_instance(name), vsa::tools::Logger::Level::ERROR, __VA_ARGS__);
+VSA_LOGGER_CALL(vsa::tools::Logger::get_instance(name), vsa::tools::Logger::Level::ERROR, __VA_ARGS__)

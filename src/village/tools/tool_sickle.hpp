@@ -2,16 +2,19 @@
 // Created by Serhii Pustovit on 30.11.2025.
 //
 
-#ifndef VILLAGE_TOOL_SICKLE_HPP
-#define VILLAGE_TOOL_SICKLE_HPP
+#pragma once
 
-namespace vsa {
-namespace village {
+#include <string>
+#include <village/tool.hpp>
 
-class ToolSickle
-{};
+namespace vsa::village {
 
-} // village
-} // vsa
+class ToolSickle : public Tool {
+public:
+    static std::string get_id()   { return "tool_sickle"; }
+    static std::string get_name() { return "Sickle"; }
+    static int        get_price() { return 15; }
+};
 
-#endif // VILLAGE_TOOL_SICKLE_HPP
+} // namespace vsa::village
+

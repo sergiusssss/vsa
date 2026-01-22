@@ -2,16 +2,19 @@
 // Created by Serhii Pustovit on 30.11.2025.
 //
 
-#ifndef VILLAGE_TOOL_TRIPHAMMER_HPP
-#define VILLAGE_TOOL_TRIPHAMMER_HPP
+#pragma once
 
-namespace vsa {
-namespace village {
+#include <string>
+#include <village/tool.hpp>
 
-class ToolTriphammer
-{};
+namespace vsa::village {
 
-} // village
-} // vsa
+class ToolTriphammer : public Tool {
+public:
+    static std::string get_id()   { return "tool_triphammer"; }
+    static std::string get_name() { return "Triphammer"; }
+    static int        get_price() { return 25; }
+};
 
-#endif // VILLAGE_TOOL_TRIPHAMMER_HPP
+} // namespace vsa::village
+

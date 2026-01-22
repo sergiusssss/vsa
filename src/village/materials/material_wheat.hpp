@@ -2,10 +2,19 @@
 // Created by Serhii Pustovit on 30.11.2025.
 //
 
-#ifndef VILLAGE_MATERIAL_WHEAT_HPP
-#define VILLAGE_MATERIAL_WHEAT_HPP
+#pragma once
 
-class MaterialWheat
-{};
+#include <string>
+#include <village/material.hpp>
 
-#endif // VILLAGE_MATERIAL_WHEAT_HPP
+namespace vsa::village {
+
+class MaterialWheat : public Material {
+public:
+    static std::string get_id()   { return "material_wheat"; }
+    static std::string get_name() { return "Wheat"; }
+    static int        get_price() { return 3; }
+};
+
+} // namespace vsa::village
+
