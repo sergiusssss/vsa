@@ -3,6 +3,8 @@
 #include "village/entities_registry.hpp"
 #include "village/village.hpp"
 
+#include "village/items_registry.hpp"
+
 #include <imgui.h>
 
 #include <utility>
@@ -93,6 +95,37 @@ void ConfigurationWindow::render()
         ImGui::DragFloat(("Initial percentage##" + name).c_str(), &r.second.initial_percentage, 0, 0, 1);
         ImGui::DragFloat(("Become probability##" + name).c_str(), &r.second.become_probability, 0, 0, 1);
     }
+
+
+    ImGui::SeparatorText("Market Prices");
+    if (ImGui::BeginTable("ItemsTable", 2, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg))
+    {
+        
+        ImGui::TableSetupColumn("Item Name");
+        ImGui::TableSetupColumn("Price");
+        ImGui::TableHeadersRow();
+
+        
+        const auto& items = village::ItemsRegistry::get_instance().get_items();
+        
+        
+        for (const auto& [id, info] : items)
+        {
+            ImGui::TableNextRow();
+            
+            ImGui::TableSetColumnIndex(0);
+            ImGui::Text("%s", info.name.c_str());
+            
+            ImGui::TableSetColumnIndex(1);
+            ImGui::Text("%d gold", info.price);
+        }
+        
+        ImGui::EndTable();
+    }
+
+
+
+    ImGui::DragInt("Max numver of children", &m_config.population.max_number_of_children, 1, 0, 20);
 
     ImGui::SeparatorText("Run");
 

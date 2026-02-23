@@ -9,7 +9,9 @@ namespace vsa {
 namespace village {
 
 class Material
-{};
+{
+    
+};
 
 } // village
 } // vsa

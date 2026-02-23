@@ -1,8 +1,15 @@
 #pragma once
 
+
+
 #include <string>
+#include <map>
+#include <memory>
+#include <mutex>
+#include <utility>
 
 #include <spdlog/spdlog.h>
+
 
 namespace vsa::tools {
 
@@ -46,7 +53,7 @@ private:
     std::shared_ptr<spdlog::logger> m_logger;
 };
 
-}
+};
 
 #define VSA_LOGGER_CALL(logger, level, ...) \
 (logger).log(level, __VA_ARGS__)

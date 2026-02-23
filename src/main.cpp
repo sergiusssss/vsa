@@ -1,10 +1,12 @@
 #include "tools/logger.hpp"
 
+
+
 #include <csignal>
 #include <iostream>
 #include <memory>
 
-#include <tools/logger.hpp>
+
 #include <village_app.hpp>
 
 #include <village/entities_registry.hpp>

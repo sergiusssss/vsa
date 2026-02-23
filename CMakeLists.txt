@@ -60,10 +60,18 @@ add_executable(${PROJECT_NAME}
         src/village/entities_registry.cpp
         src/village/entities_registry.hpp
         src/village/entities_registrator.cpp
+        src/village/items_registry.hpp
+        src/village/items_registry.cpp
+        src/village/items_registrator.cpp
 )
 
-target_include_directories(${PROJECT_NAME} PRIVATE src/)
+target_include_directories(${PROJECT_NAME} PRIVATE src/ src/tools/ src/ui/ src/simulation/ src/village/)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE imgui glm::glm json::json spdlog::spdlog)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE imgui glm::glm json::json spdlog::spdlog) 
+
+
+
+
 
 

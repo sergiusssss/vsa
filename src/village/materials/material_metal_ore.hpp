@@ -2,10 +2,18 @@
 // Created by Serhii Pustovit on 30.11.2025.
 //
 
-#ifndef VILLAGE_MATERIAL_METAL_ORE_HPP
-#define VILLAGE_MATERIAL_METAL_ORE_HPP
+#pragma once
+#include <string>
+#include <village/material.hpp>
 
-class MaterialMetalOre
-{};
+namespace vsa::village{
 
-#endif // VILLAGE_MATERIAL_METAL_ORE_HPP
+class MaterialMetalOre : public Material {
+
+public:
+    static std::string get_id() { return "material_metal_ore"; }
+    static std::string get_name() { return "Iron Ore"; }
+    static int get_price() { return 10; }
+};
+
+}
