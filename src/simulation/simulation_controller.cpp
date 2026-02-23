@@ -2,6 +2,7 @@
 
 #include <mutex>
 #include <utility>
+#include <random>
 
 #include <tools/logger.hpp>
 
@@ -84,6 +85,15 @@ void SimulationController::working_thread()
         //std::this_thread::sleep_for(std::chrono::seconds(3));
 
         std::vector<SimulationDataPoint> points(config.max_duration_days);
+
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> distrib(500, 5000); 
+        
+        for(auto& p : points) {
+            p.m_population = distrib(gen);
+        }
+
         SimulationData data(std::move(points));
 
         auto simulation = std::make_shared<Simulation>(config, data);

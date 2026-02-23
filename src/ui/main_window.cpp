@@ -1,5 +1,7 @@
 #include "main_window.hpp"
 
+#include <string>
+
 #include <imgui.h>
 #include <imgui_neo_sequencer.h>
 
@@ -51,6 +53,11 @@ void MainWindow::render_menu()
 
         ImGui::EndMenu();
     }
+}
+
+float get_population(void* data, int idx) {
+    sim::Simulation* simul = reinterpret_cast<sim::Simulation*>(data);
+    return simul->get_data().get_points()[idx].m_population;
 }
 
 void MainWindow::render()
@@ -110,8 +117,13 @@ void MainWindow::render()
         }
         ImGui::SameLine();
         ImGui::Text("Day: %d", m_current_day);
+
+        std::string overlay_text;
+        overlay_text = "Current Population: " + std::to_string(m_simulation->get_data().get_points()[m_current_day].m_population);
+        ImGui::PlotLines("##PopulationHistogram", &get_population, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, overlay_text.c_str(), 500, 5000, ImVec2(0, 160));
+
         if (ImGui::BeginNeoSequencer("Sequencer", &m_current_day, &m_start_day, &m_end_day)) {
-            // Timeline code here
+            
             ImGui::EndNeoSequencer();
         }
     }
