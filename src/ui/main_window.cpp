@@ -1,5 +1,7 @@
 #include "main_window.hpp"
-
+#include <vector>
+#include <algorithm>
+#include <random>
 #include <imgui.h>
 #include <imgui_neo_sequencer.h>
 
@@ -51,6 +53,37 @@ void MainWindow::render_menu()
 
         ImGui::EndMenu();
     }
+}
+
+// struct PT {int x; int y;};
+
+//     std::vector<PT> to_points(const std::vector<int>& data,
+//                             int left, int right, int width, int height, int top, int bottom) {
+//                                 std::vector<PT> pts;
+//                                 if (data.empty()) return pts;
+
+//                                 int mn = *std::min_element(data.begin(), data.end());
+//                                 int mx = *std::max_element(data.begin(), data.end());
+//                                 int range = mx - mn;
+//                                 if (range == 0) range = 1;
+
+//                                 int n = (int)data.size();
+//                                 pts.reserve(n);                                
+//                                 for(int i = 0; i < n; ++i) {
+//                                     double x = (n == 1) ? 0.0 : (double) i / (n-1);
+//                                     double y = (data[i] - mn) / range;
+
+                                    
+//                                     int x = left + (int)(x * width);
+//                                     int y = top + height - (int)(y * height);
+
+//                                     pts.push_back({x, y});
+//                                 }
+//                                 return pts;
+//                             }
+float get_population(void* data, int idx) {
+    sim::Simulation* simul = reinterpret_cast<sim::Simulation*>(data);
+    return simul->get_data().get_points()[idx].m_population;
 }
 
 void MainWindow::render()
@@ -110,10 +143,15 @@ void MainWindow::render()
         }
         ImGui::SameLine();
         ImGui::Text("Day: %d", m_current_day);
+        
+        ImGui::PlotHistogram("Histogram", &get_population, m_simulation.get(),m_simulation->get_data().get_points().size(), 0, nullptr, 1, 10000, ImVec2(0, 80));
+
         if (ImGui::BeginNeoSequencer("Sequencer", &m_current_day, &m_start_day, &m_end_day)) {
             // Timeline code here
             ImGui::EndNeoSequencer();
         }
+
+       
     }
 
     if (disabled) { ImGui::EndDisabled(); }

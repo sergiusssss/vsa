@@ -1,11 +1,11 @@
 #pragma once
 
 #include <atomic>
-#include <condition_variable>
 #include <memory>
-#include <mutex>
 #include <queue>
 #include <thread>
+#include <condition_variable>
+#include <mutex>
 
 #include <simulation/simulation.hpp>
 #include <simulation/simulation_config.hpp>
