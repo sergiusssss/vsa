@@ -1,4 +1,4 @@
-#include "configuration_window.hpp"
+#include <configuration_window.hpp>
 
 #include "village/entities_registry.hpp"
 #include "village/village.hpp"
@@ -8,6 +8,10 @@
 #include <imgui.h>
 
 #include <utility>
+
+#include "results_window.hpp"
+
+
 
 namespace vsa::ui {
 
@@ -147,6 +151,12 @@ void ConfigurationWindow::render()
     }
 
     ImGui::End();
+    
+    if (m_stats_window) {
+        m_stats_window->render(); //test
+    }
+    
+    
 }
 
 } // ui

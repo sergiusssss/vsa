@@ -18,6 +18,8 @@ public:
 private:
     std::shared_ptr<ui::Renderer> m_renderer;
     std::shared_ptr<sim::SimulationController> m_controller;
+
+    std::vector<std::shared_ptr<ui::Window>> m_windows;//test
 };
 
 }

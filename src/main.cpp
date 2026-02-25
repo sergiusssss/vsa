@@ -11,6 +11,12 @@
 
 #include <village/entities_registry.hpp>
 
+#include "ui/configuration_window.hpp"
+#include "ui/results_window.hpp" 
+#include "simulation/simulation_controller.hpp"
+
+#include "ui/statistics_window.hpp"
+
 std::unique_ptr<vsa::VillageApp> app;
 
 void signal_handler(int signal)
@@ -35,9 +41,15 @@ int main(int, char**)
     std::signal(SIGSEGV, signal_handler);
     std::signal(SIGTERM, signal_handler);
 
+    
+
     app->init();
     app->run();
     app->deinit();
+
+    
+
+    
 
     return 0;
 }

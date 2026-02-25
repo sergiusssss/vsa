@@ -63,6 +63,9 @@ add_executable(${PROJECT_NAME}
         src/village/items_registry.hpp
         src/village/items_registry.cpp
         src/village/items_registrator.cpp
+
+        src/ui/results_window.hpp
+        src/ui/statistics_window.hpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE src/ src/tools/ src/ui/ src/simulation/ src/village/)

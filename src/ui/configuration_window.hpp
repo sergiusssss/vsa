@@ -6,6 +6,11 @@
 #include <simulation/simulation_controller.hpp>
 #include <ui/window.hpp>
 
+#include "results_window.hpp"
+
+#include "statistics_window.hpp"
+ 
+
 namespace vsa::ui {
 
 class ConfigurationWindow
@@ -19,11 +24,29 @@ public:
     void render_menu() override;
     void render() override;
 
+    
+
+    //std::shared_ptr<StatisticsWindow> m_stats_display = std::make_shared<StatisticsWindow>();//test
+
+    void set_statistics_window(std::shared_ptr<StatisticsWindow> window) { //test
+        m_stats_window = window;
+    }
+
 private:
+
+    std::shared_ptr<StatisticsWindow> m_stats_window = std::make_shared<StatisticsWindow>();//test
+
     void on_simulation(std::size_t id, std::shared_ptr<sim::Simulation> simulation) override
     {
         m_is_simulation_running = false;
-        m_is_visible = false;
+        //m_is_visible = false;
+
+        if (m_stats_window) {
+        m_stats_window->set_data(simulation);//test
+    }
+
+        std::shared_ptr<StatisticsWindow> m_stats_window = std::make_shared<StatisticsWindow>();//test
+
     }
 
 private:

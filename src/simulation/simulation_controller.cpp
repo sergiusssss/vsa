@@ -2,6 +2,8 @@
 
 #include <mutex>
 #include <utility>
+#include <cstdlib>
+#include <vector>
 
 #include <tools/logger.hpp>
 
@@ -83,8 +85,30 @@ void SimulationController::working_thread()
 
         //std::this_thread::sleep_for(std::chrono::seconds(3));
 
-        std::vector<SimulationDataPoint> points(config.max_duration_days);
+        //std::vector<SimulationDataPoint> points(config.max_duration_days);
+
+        std::vector<SimulationDataPoint> points;
+for (size_t i = 0; i < config.max_duration_days; ++i) {
+    points.push_back({ (size_t)(std::rand() % 1000) }); // Рандомное население
+}
+
+       // std::vector<SimulationDataPoint> points;
+       // points.reserve(config.max_duration_days); //test
+
         SimulationData data(std::move(points));
+
+       // const std::size_t MAX_CAPACITY = 500;//test
+
+//for (std::size_t i = 0; i < config.max_duration_days; ++i) { //test
+   // SimulationDataPoint point;
+    
+   // point.m_population = std::rand() % MAX_CAPACITY; 
+   // points.push_back(point);
+//} //test
+
+//SimulationData data(std::move(points));
+
+       
 
         auto simulation = std::make_shared<Simulation>(config, data);
 
