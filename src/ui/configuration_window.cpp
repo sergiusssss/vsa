@@ -83,27 +83,6 @@ void ConfigurationWindow::render()
                      0,
                      0,
                      1);
-    
-    ImGui::DragInt("Max children", &m_config.population.initial_max_children, 1, 0, 90);
-
-    ImGui::SeparatorText("Residents");
-
-    const auto& ress = village::EntityRegistry::get_instance().get_residents();
-    for (auto& r : m_config.residents) {
-        const auto& name = ress.at(r.first);
-        ImGui::Text("%s", name.c_str());
-        ImGui::DragFloat(("Initial percentage##" + name).c_str(), &r.second.initial_percentage, 0, 0, 1);
-        ImGui::DragFloat(("Become probability##" + name).c_str(), &r.second.become_probability, 0, 0, 1);
-    }
-
-    ImGui::SeparatorText("Items");
-
-    const auto& ites = village::EntityRegistry::get_instance().get_items();
-    for (auto& i : m_config.items) {
-        const auto& name = ites.at(i.first);
-        ImGui::Text("%s", name.c_str());
-        ImGui::DragFloat(("Initial price##" + name).c_str(), &i.second.initial_price, 0.10f, 0, 100);
-    }
 
     ImGui::SeparatorText("Residents");
 

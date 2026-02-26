@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.30)
 project(village)
 
 set(CMAKE_CXX_STANDARD 23)
+option(TRACY_ENABLE "" ON)
 
 include(cmake/dependencies.cmake)
 
@@ -53,9 +54,6 @@ add_executable(${PROJECT_NAME}
         src/village/dishes/dish_bread.cpp
         src/village/dishes/dish_bread.hpp
         src/village/dish.hpp
-        src/village/entity_registrator.cpp
-        src/village/entity_registry.cpp
-        src/village/entity_registry.hpp
         src/village/village_builder.cpp
         src/village/village_builder.hpp
         src/village/village_factory.cpp
@@ -74,6 +72,6 @@ add_executable(${PROJECT_NAME}
 
 target_include_directories(${PROJECT_NAME} PRIVATE src/)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE imgui glm::glm json::json spdlog::spdlog)
+target_link_libraries(${PROJECT_NAME} PRIVATE imgui glm::glm json::json spdlog::spdlog TracyClient)
 
 
