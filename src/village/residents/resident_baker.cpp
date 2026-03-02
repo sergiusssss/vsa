@@ -4,7 +4,15 @@
 
 #include "resident_baker.hpp"
 
-namespace vsa {
-namespace village {
+#include <iostream>
+
+namespace vsa::village {
+
+ResidentBaker::ResidentBaker(bool is_male, std::size_t age_days) : Resident(is_male, age_days) {}
+
+void vsa::village::ResidentBaker::eat()
+{
+    std::cout << "ResidentBaker eat" << std::endl;
+}
+
 } // village
-} // vsa

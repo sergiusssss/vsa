@@ -94,10 +94,10 @@ void ConfigurationWindow::render()
 
     const auto& ress = village::EntitiesRegistry::get_instance().get_residents();
     for (auto& r : m_config.residents) {
-        const auto& name = ress.at(r.first);
-        ImGui::Text("%s", name.c_str());
-        ImGui::DragFloat(("Initial percentage##" + name).c_str(), &r.second.initial_percentage, 0, 0, 1);
-        ImGui::DragFloat(("Become probability##" + name).c_str(), &r.second.become_probability, 0, 0, 1);
+        const auto& entity = ress.at(r.first);
+        ImGui::Text("%s", entity.name.c_str());
+        ImGui::DragFloat(("Initial percentage##" + entity.name).c_str(), &r.second.initial_percentage, 0, 0, 1);
+        ImGui::DragFloat(("Become probability##" + entity.name).c_str(), &r.second.become_probability, 0, 0, 1);
     }
 
 

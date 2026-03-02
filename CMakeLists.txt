@@ -66,6 +66,13 @@ add_executable(${PROJECT_NAME}
 
         src/ui/results_window.hpp
         src/ui/statistics_window.hpp
+        src/village/residents/resident_factory.cpp
+        src/village/residents/resident_factory.hpp
+        src/tools/random_engine.cpp
+        src/tools/random_engine.hpp
+        src/village/resident.cpp
+        src/village/village_config.cpp
+        src/village/village_config.hpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE src/ src/tools/ src/ui/ src/simulation/ src/village/)
