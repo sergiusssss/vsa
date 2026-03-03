@@ -4,7 +4,7 @@
 #include <memory>
 #include <queue>
 #include <thread>
-
+#include <iostream>
 #include <simulation/simulation.hpp>
 #include <simulation/simulation_config.hpp>
 #include <simulation/simulation_data.hpp>

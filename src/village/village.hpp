@@ -6,6 +6,9 @@
 #include <village/storage.hpp>
 #include <village/resident.hpp>
 
+#include <simulation/simulation_config.hpp>
+#include <simulation.hpp>
+
 #include <simulation/simulation_data.hpp>
 
 namespace vsa::village {

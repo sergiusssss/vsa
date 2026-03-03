@@ -129,14 +129,14 @@ void SimulationController::working_thread()
                 VSA_LOG_INFO("sim_ctrl", "Simulation {}% done. Count: {}. Avg iteration time: {} ms.", (day / (1.0 * config.max_duration_days)) * 100, avg_time_count, avg_time_sum / avg_time_count);
                 avg_time_count = 0;
                 avg_time_sum = 0;
-            }
+    }
         }
 
         //std::vector<SimulationDataPoint> points(config.max_duration_days);
 
         // ... внутри while (!m_should_stop.load()) в методе working_thread ...
 
-std::vector<SimulationDataPoint> points;
+/*std::vector<SimulationDataPoint> points;
 points.reserve(config.max_duration_days);//test
 
 for (std::size_t day = 0; day < config.max_duration_days; ++day) {
@@ -160,7 +160,7 @@ for (std::size_t day = 0; day < config.max_duration_days; ++day) {
     }
 
     points.push_back(std::move(point));//test
-}
+}*/
 
 
         SimulationData data(std::move(points));

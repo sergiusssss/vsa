@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 23)
 
 include(cmake/dependencies.cmake)
 
+
+
 add_executable(${PROJECT_NAME}
         src/main.cpp
         src/village_app.cpp
@@ -66,7 +68,9 @@ add_executable(${PROJECT_NAME}
 
         src/ui/results_window.hpp
         src/ui/statistics_window.hpp
-        src/village/residents/resident_factory.cpp
+
+
+        src/village/residents/resident_factory.cpp #new added
         src/village/residents/resident_factory.hpp
         src/tools/random_engine.cpp
         src/tools/random_engine.hpp
@@ -75,11 +79,13 @@ add_executable(${PROJECT_NAME}
         src/village/village_config.hpp
 )
 
-target_include_directories(${PROJECT_NAME} PRIVATE src/ src/tools/ src/ui/ src/simulation/ src/village/)
+
+target_include_directories(${PROJECT_NAME} PRIVATE src/ src/tools/ src/ui/ src/simulation/ src/village/ ${CMAKE_SOURCE_DIR}/../tracy/public )
 
 
-target_link_libraries(${PROJECT_NAME} PRIVATE imgui glm::glm json::json spdlog::spdlog) 
 
+target_link_libraries(${PROJECT_NAME} PRIVATE imgui glm::glm json::json spdlog::spdlog )
+# Если потребуется линковка tracy, добавьте сюда нужные файлы или библиотеки tracy вручную
 
 
 
