@@ -55,8 +55,11 @@ bool SimulationController::run()
 
 void SimulationController::register_callback_listener(std::shared_ptr<CallbackListener> listener)
 {
-    std::lock_guard lg(m_listener_mtx);
-    m_listeners.push_back(std::move(listener));
+    {
+        ZoneScopedN("Sim Listener Push");
+        std::lock_guard lg(m_listener_mtx);
+        m_listeners.push_back(std::move(listener));
+    }
 }
 
 std::size_t SimulationController::simulate(const SimulationConfig& config)
@@ -117,20 +120,23 @@ void SimulationController::working_thread()
         std::size_t avg_time_sum = 0;
         std::size_t avg_time_count = 0;
         {
-            ZoneScoped;
+            ZoneScopedN("Global Sim");
             for (std::size_t day = 0; v.get_size() > 0 && day <= config.max_duration_days; ++day) {
-                std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-                points.push_back(v.iterate());
+                {
+                    ZoneScopedN("Main Sim Loop");
+                    std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
+                    points.push_back(v.iterate());
 
-                std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+                    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
-                avg_time_sum += std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-                avg_time_count++;
+                    avg_time_sum += std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+                    avg_time_count++;
 
-                if (day % (config.max_duration_days / 10) == 0) {
-                    VSA_LOG_INFO("sim_ctrl", "Simulation {}% done. Count: {}. Avg iteration time: {} ms.", (day / (1.0 * config.max_duration_days)) * 100, avg_time_count, avg_time_sum / avg_time_count);
-                    avg_time_count = 0;
-                    avg_time_sum = 0;
+                    if (day % (config.max_duration_days / 10) == 0) {
+                        VSA_LOG_INFO("sim_ctrl", "Simulation {}% done. Count: {}. Avg iteration time: {} ms.", (day / (1.0 * config.max_duration_days)) * 100, avg_time_count, avg_time_sum / avg_time_count);
+                        avg_time_count = 0;
+                        avg_time_sum = 0;
+                    }
                 }
             }
 

@@ -3,6 +3,7 @@
 //
 
 #include "village.hpp"
+#include "tracy/Tracy.hpp"
 
 namespace vsa {
 namespace village {
@@ -17,8 +18,11 @@ sim::SimulationDataPoint Village::iterate()
     // Produce
 
     for (std::size_t i = 0; i < m_residents.size(); ++i) {
-        auto& resident = m_residents.at(i);
-        resident->iterate();
+        {
+            ZoneScopedN("Global Sim Iterate");
+            auto& resident = m_residents.at(i);
+            resident->iterate();
+        }
     }
     std::erase_if(m_residents, [](const std::shared_ptr<Resident>& r) { return r->is_dead(); });
 
@@ -27,11 +31,14 @@ sim::SimulationDataPoint Village::iterate()
     sim::SimulationDataPoint p;
     p.m_population = m_residents.size();
     for (const auto& resident : m_residents) {
-        if (resident->is_male()) { p.m_males++; }
-        else { p.m_females++; }
+        {
+            ZoneScopedN("Global Sim Statistic");
+            if (resident->is_male()) { p.m_males++; }
+            else { p.m_females++; }
 
-        p.m_avg_age_years += resident->get_age_years();
-        p.m_count_by_resident[resident->get_id()]++;
+            p.m_avg_age_years += resident->get_age_years();
+            p.m_count_by_resident[resident->get_id()]++;
+        }
     }
     p.m_avg_age_years /= m_residents.size();
 
