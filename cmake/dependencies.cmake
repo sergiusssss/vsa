@@ -22,4 +22,10 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(json glm logger)
 
+
+# Tracy находится в соседней папке, подключаем вручную
+set(TRACY_DIR "${CMAKE_SOURCE_DIR}/../tracy")
+include_directories(${TRACY_DIR}/public)
+
+
 add_library(json::json ALIAS nlohmann_json)

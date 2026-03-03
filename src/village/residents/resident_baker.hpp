@@ -10,6 +10,7 @@ namespace vsa::village {
 class ResidentBaker : public Resident
 {
 public:
+    std::string get_profession() const override { return "Baker"; }
     static std::string s_get_id() { return "r_baker"; }
     static std::string s_get_name() { return "Baker"; }
     std::string get_id() override { return s_get_id(); }

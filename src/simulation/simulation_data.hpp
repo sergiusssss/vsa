@@ -2,16 +2,19 @@
 
 #include <vector>
 #include <map>
+#include <string>
+#include <iostream>
 
 namespace vsa::sim {
 
 struct SimulationDataPoint
 {
-    std::size_t m_population = 0;
-    std::size_t m_males = 0;
-    std::size_t m_females = 0;
-    std::size_t m_avg_age_years = 0;
-    std::map<std::string, std::size_t> m_count_by_resident;
+    std::size_t m_population;
+    float m_average_age;
+    std::size_t m_males;
+    std::size_t m_females;
+    
+    std::map<std::string, std::size_t> m_profession_distribution;
 };
 
 class SimulationData

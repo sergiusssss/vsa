@@ -26,14 +26,18 @@ sim::SimulationDataPoint Village::iterate()
     // Generate statistics data
     sim::SimulationDataPoint p;
     p.m_population = m_residents.size();
+
     for (const auto& resident : m_residents) {
         if (resident->is_male()) { p.m_males++; }
         else { p.m_females++; }
 
-        p.m_avg_age_years += resident->get_age_years();
-        p.m_count_by_resident[resident->get_id()]++;
+        p.m_average_age += resident->get_age_years();
+        // Заполняем распределение профессий
+        p.m_profession_distribution[resident->get_profession()]++;
     }
-    p.m_avg_age_years /= m_residents.size();
+    if (!m_residents.empty()) {
+        p.m_average_age /= m_residents.size();
+    }
 
     return p;
 }

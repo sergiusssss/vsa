@@ -2,10 +2,15 @@
 // Created by Serhii Pustovit on 30.11.2025.
 //
 
-#ifndef VILLAGE_MATERIAL_BREAD_HPP
-#define VILLAGE_MATERIAL_BREAD_HPP
 
-class MaterialBread
-{};
+#pragma once
+#include <string>
+#include "../dish.hpp"
 
-#endif // VILLAGE_MATERIAL_BREAD_HPP
+class DishBread : public dish 
+{
+public:
+    static std::string get_id() { return "dish_bread"; }
+    static std::string get_name() { return "Bread"; }
+    static int get_price() { return 5; } 
+};

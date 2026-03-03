@@ -5,6 +5,8 @@
 #include <mutex>
 #include <random>
 #include <utility>
+#include <cstdlib>
+#include <vector>
 
 #include <tools/logger.hpp>
 #include <tools/random_engine.hpp>
@@ -127,10 +129,47 @@ void SimulationController::working_thread()
                 VSA_LOG_INFO("sim_ctrl", "Simulation {}% done. Count: {}. Avg iteration time: {} ms.", (day / (1.0 * config.max_duration_days)) * 100, avg_time_count, avg_time_sum / avg_time_count);
                 avg_time_count = 0;
                 avg_time_sum = 0;
-            }
+    }
         }
 
+        //std::vector<SimulationDataPoint> points(config.max_duration_days);
+
+        // ... внутри while (!m_should_stop.load()) в методе working_thread ...
+
+/*std::vector<SimulationDataPoint> points;
+points.reserve(config.max_duration_days);//test
+
+for (std::size_t day = 0; day < config.max_duration_days; ++day) {
+    SimulationDataPoint point;
+    
+    
+    point.m_population = 500 + (std::rand() % 500); 
+    
+    
+    point.m_males = static_cast<std::size_t>(point.m_population * (config.population.percentage_of_men / 100.0f));//test
+    point.m_females = point.m_population - point.m_males;
+    
+    
+    int min_a = config.population.initial_min_age;
+    int max_a = config.population.initial_max_age;
+    point.m_average_age = static_cast<float>(min_a + (std::rand() % (max_a - min_a + 1)));//test
+    
+    
+    for (const auto& [name, res_cfg] : config.residents) {
+        point.m_profession_distribution[name] = static_cast<std::size_t>(point.m_population * res_cfg.initial_percentage);//test< m_profetion!!
+    }
+
+    points.push_back(std::move(point));//test
+}*/
+
+
         SimulationData data(std::move(points));
+
+       
+
+
+
+       
 
         auto simulation = std::make_shared<Simulation>(config, data);
 

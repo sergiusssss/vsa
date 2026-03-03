@@ -2,6 +2,9 @@
 
 #include <imgui.h>
 #include <imgui_neo_sequencer.h>
+#include "statistics_window.hpp"
+#include "simulation/simulation.hpp"
+#include "simulation/simulation_data.hpp"
 
 namespace vsa::ui {
 
@@ -64,7 +67,7 @@ float get_avg_age(void* data, int idx)
 {
     auto& sim = *reinterpret_cast<sim::Simulation*>(data);
 
-    return sim.get_data().get_points()[idx].m_avg_age_years;
+    return sim.get_data().get_points()[idx].m_average_age;
 }
 
 float get_males_females(void* data, int idx)
@@ -150,7 +153,7 @@ void MainWindow::render()
             const sim::SimulationDataPoint& current_p = m_simulation->get_data().get_points()[m_current_day];
             ImGui::Text("Day %d. (Year: %d)", m_current_day, m_current_day / 365);
             ImGui::Text("Population: %d", current_p.m_population);
-            ImGui::Text("Average age: %d years", current_p.m_avg_age_years);
+            ImGui::Text("Average age: %.1f years", current_p.m_average_age);
             ImGui::Text("Males/Females: %d/%d", current_p.m_males, current_p.m_females);
             ImGui::ProgressBar(1.0 * current_p.m_males / (current_p.m_males + current_p.m_females));
 

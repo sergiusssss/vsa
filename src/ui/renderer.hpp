@@ -11,6 +11,9 @@
 
 #include <ui/window.hpp>
 
+#include <mutex>
+#include <condition_variable>
+
 namespace vsa::ui {
 
 class Renderer

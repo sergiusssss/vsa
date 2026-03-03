@@ -1,11 +1,17 @@
-#include "configuration_window.hpp"
+#include <configuration_window.hpp>
 
 #include "village/entities_registry.hpp"
 #include "village/village.hpp"
 
+#include "village/items_registry.hpp"
+
 #include <imgui.h>
 
 #include <utility>
+
+#include "results_window.hpp"
+
+
 
 namespace vsa::ui {
 
@@ -94,6 +100,37 @@ void ConfigurationWindow::render()
         ImGui::DragFloat(("Become probability##" + entity.name).c_str(), &r.second.become_probability, 0, 0, 1);
     }
 
+
+    ImGui::SeparatorText("Market Prices");
+    if (ImGui::BeginTable("ItemsTable", 2, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg))
+    {
+        
+        ImGui::TableSetupColumn("Item Name");
+        ImGui::TableSetupColumn("Price");
+        ImGui::TableHeadersRow();
+
+        
+        const auto& items = village::ItemsRegistry::get_instance().get_items();
+        
+        
+        for (const auto& [id, info] : items)
+        {
+            ImGui::TableNextRow();
+            
+            ImGui::TableSetColumnIndex(0);
+            ImGui::Text("%s", info.name.c_str());
+            
+            ImGui::TableSetColumnIndex(1);
+            ImGui::Text("%d gold", info.price);
+        }
+        
+        ImGui::EndTable();
+    }
+
+
+
+    ImGui::DragInt("Max numver of children", &m_config.population.max_number_of_children, 1, 0, 20);
+
     ImGui::SeparatorText("Run");
 
     if (m_is_simulation_running) {
@@ -114,6 +151,12 @@ void ConfigurationWindow::render()
     }
 
     ImGui::End();
+    
+    if (m_stats_window) {
+        m_stats_window->render(); //test
+    }
+    
+    
 }
 
 } // ui

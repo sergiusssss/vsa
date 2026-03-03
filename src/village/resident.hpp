@@ -8,6 +8,7 @@ namespace vsa::village {
 class Resident
 {
 public:
+    virtual std::string get_profession() const = 0;
     Resident() = delete;
     explicit Resident(bool is_male, std::size_t age_days);
 
@@ -31,7 +32,7 @@ public:
 private:
     bool m_is_male = true;
     std::size_t m_age_days = 0;
-    float m_death_probability = 0.0f;
+    float m_death_probability = 0.3f;
 
     bool m_is_dead = false;
 };
