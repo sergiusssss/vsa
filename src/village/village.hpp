@@ -15,12 +15,16 @@ class Village
 public:
     Village(std::vector<std::shared_ptr<Resident>> residents);
 
-    sim::SimulationDataPoint iterate();
+    sim::SimulationDataPoint iterate(sim::SimulationDataGlobal& global);
 
     std::size_t get_size() const { return m_residents.size(); }
 private:
     std::shared_ptr<Storage> m_storage;
     std::vector<std::shared_ptr<Resident>> m_residents;
+    std::vector<std::shared_ptr<Resident>> m_residents_m;
+    std::vector<std::shared_ptr<Resident>> m_residents_f;
+
+    std::vector<std::pair<std::shared_ptr<Resident>, std::shared_ptr<Resident>>> m_couples;
 };
 
 } // village

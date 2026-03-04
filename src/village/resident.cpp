@@ -28,4 +28,17 @@ bool Resident::iterate()
     return m_is_dead;
 }
 
+void Resident::remove_relations()
+{
+    if (m_partner) { m_partner->remove_partner(); }
+    if (m_father) { m_father->remove_child(shared_from_this()); }
+    if (m_mother) { m_mother->remove_child(shared_from_this()); }
+    if (is_male()) {
+        for (auto c : m_children) { c->remove_father(); }
+    }
+    else {
+        for (auto c : m_children) { c->remove_mother(); }
+    }
+}
+
 } // vsa
