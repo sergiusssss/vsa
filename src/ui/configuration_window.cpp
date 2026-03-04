@@ -2,6 +2,8 @@
 
 #include "village/entities_registry.hpp"
 #include "village/village.hpp"
+#include <village/tools/tool_sickle.hpp>
+#include <village/tools/tool_triphammer.hpp>
 
 #include <imgui.h>
 
@@ -83,7 +85,13 @@ void ConfigurationWindow::render()
                      0,
                      0,
                      1);
-
+    
+    ImGui::DragInt("max child",
+                     &m_config.population.initial_max_children,
+                     1,
+                     0,
+                     90);
+                     
     ImGui::SeparatorText("Residents");
 
     const auto& ress = village::EntitiesRegistry::get_instance().get_residents();

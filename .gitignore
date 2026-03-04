@@ -4,3 +4,8 @@
 cmake-build-*/
 buildx/
 build/
+out/
+*.obj
+*.tlog
+*.sln
+*.vcxproj*

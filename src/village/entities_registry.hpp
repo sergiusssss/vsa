@@ -37,6 +37,7 @@ public:
     ResidentRegistrator()
     {
         auto& r = EntitiesRegistry::get_instance();
+
         r.register_resident(T::s_get_id(), T::s_get_name());
     }
 };

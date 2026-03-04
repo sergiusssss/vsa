@@ -1,5 +1,7 @@
 #include "main_window.hpp"
-
+#include <vector>
+#include <algorithm>
+#include <random>
 #include <imgui.h>
 #include <imgui_neo_sequencer.h>
 
@@ -205,6 +207,8 @@ void MainWindow::render()
             // Timeline code here
             ImGui::EndNeoSequencer();
         }
+
+       
     }
 
     if (disabled) { ImGui::EndDisabled(); }

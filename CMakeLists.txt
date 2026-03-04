@@ -1,9 +1,18 @@
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.27)
 project(village)
 
 set(CMAKE_CXX_STANDARD 23)
 
 include(cmake/dependencies.cmake)
+include(FetchContent)
+
+FetchContent_Declare(
+    tracy
+    GIT_REPOSITORY https://github.com/wolfpld/tracy.git
+    GIT_TAG master
+)
+
+FetchContent_MakeAvailable(tracy)
 
 add_executable(${PROJECT_NAME}
         src/main.cpp
@@ -71,6 +80,6 @@ add_executable(${PROJECT_NAME}
 
 target_include_directories(${PROJECT_NAME} PRIVATE src/)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE imgui glm::glm json::json spdlog::spdlog)
+target_link_libraries(${PROJECT_NAME} PRIVATE imgui glm::glm json::json spdlog::spdlog Tracy::TracyClient)
 
 

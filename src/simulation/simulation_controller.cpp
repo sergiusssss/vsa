@@ -3,9 +3,9 @@
 #include "village/entities_registry.hpp"
 
 #include <mutex>
-#include <random>
 #include <utility>
-
+#include <random>
+#include <iostream>
 #include <tools/logger.hpp>
 #include <tools/random_engine.hpp>
 
@@ -14,6 +14,7 @@
 #include <village/residents/resident_factory.hpp>
 
 
+using namespace std;
 namespace vsa::sim {
 
 SimulationController::SimulationController() {}
@@ -138,7 +139,6 @@ void SimulationController::working_thread()
         SimulationData data(std::move(points), std::move(global));
 
         auto simulation = std::make_shared<Simulation>(config, data);
-
         {
             std::lock_guard lg(m_listener_mtx);
             for (auto l : m_listeners) { l->on_simulation(0, simulation); }

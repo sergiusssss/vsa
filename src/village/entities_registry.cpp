@@ -27,3 +27,4 @@ const std::vector<std::string>& EntitiesRegistry::get_residents_ids() const
 }
 
 } // vsa
+
