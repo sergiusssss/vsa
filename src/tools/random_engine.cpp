@@ -27,7 +27,8 @@ std::int64_t RandomEngine::get_random_int(std::int64_t min, std::int64_t max)
 bool RandomEngine::get_random_bool(float true_probability)
 {
     if (true_probability > 1) { VSA_LOG_INFO("tools", "Incorrect probability (> 0)."); }
-    return std::uniform_real_distribution<float>(0, 1)(m_gen) < true_probability;
+    std::bernoulli_distribution d(true_probability);
+    return d(m_gen);
 }
 
 } // tools

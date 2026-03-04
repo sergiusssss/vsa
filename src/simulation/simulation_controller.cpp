@@ -110,6 +110,7 @@ void SimulationController::working_thread()
 
         village::Village v(initial_residents);
 
+        SimulationDataGlobal global;
         std::vector<SimulationDataPoint> points;
         points.reserve(config.max_duration_days);
 
@@ -117,7 +118,7 @@ void SimulationController::working_thread()
         std::size_t avg_time_count = 0;
         for (std::size_t day = 0; v.get_size() > 0 && day <= config.max_duration_days; ++day) {
             std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-            points.push_back(v.iterate());
+            points.push_back(v.iterate(global));
 
             std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
@@ -125,13 +126,17 @@ void SimulationController::working_thread()
             avg_time_count++;
 
             if (day % (config.max_duration_days / 10) == 0) {
-                VSA_LOG_INFO("sim_ctrl", "Simulation {}% done. Count: {}. Avg iteration time: {} ms.", (day / (1.0 * config.max_duration_days)) * 100, avg_time_count, avg_time_sum / avg_time_count);
+                VSA_LOG_INFO("sim_ctrl",
+                             "Simulation {}% done. Count: {}. Avg iteration time: {} ms.",
+                             (day / (1.0 * config.max_duration_days)) * 100,
+                             avg_time_count,
+                             avg_time_sum / avg_time_count);
                 avg_time_count = 0;
                 avg_time_sum = 0;
             }
         }
 
-        SimulationData data(std::move(points));
+        SimulationData data(std::move(points), std::move(global));
 
         auto simulation = std::make_shared<Simulation>(config, data);
         {

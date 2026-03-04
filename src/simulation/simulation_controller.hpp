@@ -4,8 +4,8 @@
 #include <memory>
 #include <queue>
 #include <thread>
-#include <condition_variable>
 #include <mutex>
+#include <condition_variable>
 
 #include <simulation/simulation.hpp>
 #include <simulation/simulation_config.hpp>
