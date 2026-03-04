@@ -25,9 +25,13 @@ struct SimulationConfig
 
         float death_probability_day_increment = 0.0000003f;
 
-        float couple_creation_probability_per_day = 0.003f;
+        float couple_creation_probability_per_day = 0.04f;
         float couple_breaking_probability_per_day = 0.0001f;
-        float child_creation_probability_per_day = 0.0001f;
+        float child_creation_probability_per_day = 0.1f;
+
+        std::int32_t min_couple_creation_age_years = 16;
+        std::int32_t max_couple_creation_age_diff_years = 15;
+        std::int32_t max_child_creation_age_years = 50;
     };
     Population population;
 

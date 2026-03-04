@@ -11,6 +11,9 @@ struct SimulationDataPoint
     std::size_t m_males = 0;
     std::size_t m_females = 0;
     std::size_t m_avg_age_years = 0;
+    std::size_t m_couples_count = 0;
+    float m_avg_children_count = 0;
+    float m_avg_children_count_unique = 0;
     std::map<std::string, std::size_t> m_count_by_resident;
 };
 

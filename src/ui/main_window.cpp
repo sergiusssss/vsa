@@ -88,6 +88,27 @@ float get_females(void* data, int idx)
     return sim.get_data().get_points()[idx].m_females;
 }
 
+float get_couples(void* data, int idx)
+{
+    auto& sim = *reinterpret_cast<sim::Simulation*>(data);
+
+    return sim.get_data().get_points()[idx].m_couples_count;
+}
+
+float get_avg_children_count(void* data, int idx)
+{
+    auto& sim = *reinterpret_cast<sim::Simulation*>(data);
+
+    return sim.get_data().get_points()[idx].m_avg_children_count;
+}
+
+float get_avg_children_count_unique(void* data, int idx)
+{
+    auto& sim = *reinterpret_cast<sim::Simulation*>(data);
+
+    return sim.get_data().get_points()[idx].m_avg_children_count_unique;
+}
+
 void MainWindow::render()
 {
     ImGuiIO& io = ImGui::GetIO();
@@ -153,6 +174,9 @@ void MainWindow::render()
             ImGui::Text("Average age: %d years", current_p.m_avg_age_years);
             ImGui::Text("Males/Females: %d/%d", current_p.m_males, current_p.m_females);
             ImGui::ProgressBar(1.0 * current_p.m_males / (current_p.m_males + current_p.m_females));
+            ImGui::Text("Couples count: %d", current_p.m_couples_count);
+            ImGui::Text("Average children count: %d", current_p.m_avg_children_count);
+            ImGui::Text("Average children count unique: %d", current_p.m_avg_children_count_unique);
 
             ImGui::TreePop();
         }
@@ -164,6 +188,9 @@ void MainWindow::render()
             ImGui::PlotHistogram("Males", &get_males, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
             ImGui::PlotHistogram("Females", &get_females, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
             ImGui::PlotLines("Males/Females", &get_males_females, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
+            ImGui::PlotHistogram("Couples count", &get_couples, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
+            ImGui::PlotHistogram("Average children count", &get_avg_children_count, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
+            ImGui::PlotHistogram("Average children count (unique)", &get_avg_children_count_unique, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
             ImGui::PopItemWidth();
             ImGui::TreePop();
         }
