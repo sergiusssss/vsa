@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.30)
 project(village)
 
 set(CMAKE_CXX_STANDARD 23)
+option(TRACY_ENABLE "" ON)
 
 include(cmake/dependencies.cmake)
 
@@ -72,5 +73,6 @@ add_executable(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME} PRIVATE src/)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE imgui glm::glm json::json spdlog::spdlog)
+target_link_libraries(${PROJECT_NAME} PRIVATE Tracy::TracyClient)
 
 

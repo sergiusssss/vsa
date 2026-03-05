@@ -1,6 +1,7 @@
 #include "simulation_controller.hpp"
 
 #include "village/entities_registry.hpp"
+#include "tracy/Tracy.hpp"
 
 #include <mutex>
 #include <random>
@@ -119,10 +120,10 @@ void SimulationController::working_thread()
             std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
             points.push_back(v.iterate(global));
 
-            std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+                std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
-            avg_time_sum += std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-            avg_time_count++;
+                avg_time_sum += std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+                avg_time_count++;
 
             if (day % (config.max_duration_days / 10) == 0) {
                 VSA_LOG_INFO("sim_ctrl",
