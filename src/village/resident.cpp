@@ -38,15 +38,17 @@ bool Resident::iterate()
     return m_is_dead;
 }
 
-void Resident::remove_relations() {
-    for(auto child : m_children) {
-        if(is_male()) { child->remove_father(); }
-        else { child->remove_mother(); }
+void Resident::remove_relations()
+{
+    if (m_partner) { m_partner->remove_partner(); }
+    if (m_father) { m_father->remove_child(shared_from_this()); }
+    if (m_mother) { m_mother->remove_child(shared_from_this()); }
+    if (is_male()) {
+        for (auto c : m_children) { c->remove_father(); }
     }
-
-    if(m_father) { m_father->remove_child(shared_from_this()); }
-    if(m_mother) { m_mother->remove_child(shared_from_this()); }
-    if(m_spouse) { m_spouse->remove_spouse(); }
+    else {
+        for (auto c : m_children) { c->remove_mother(); }
+    }
 }
 
 } // vsa

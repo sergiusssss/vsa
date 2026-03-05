@@ -17,17 +17,17 @@
 namespace vsa {
 namespace village {
 
-Village::Village(std::vector<std::shared_ptr<Resident>> residents):m_residents(residents) {
-    m_residents_f.reserve(m_residents.size()/2);
-    m_residents_m.reserve(m_residents.size()/2);
-
-    for(auto res : m_residents) {
-        if(res->is_male()) { m_residents_m.push_back(res); }
-        else { m_residents_f.push_back(res); }
+Village::Village(std::vector<std::shared_ptr<Resident>> residents):m_residents(residents)
+{
+    m_residents_m.reserve(residents.size() / 2);
+    m_residents_f.reserve(residents.size() / 2);
+    for (const auto& resident : m_residents) {
+        if (resident->is_male()) { m_residents_m.emplace_back(resident); }
+        else { m_residents_f.emplace_back(resident); }
     }
 }
 
-sim::SimulationDataPoint Village::iterate()
+sim::SimulationDataPoint Village::iterate(sim::SimulationDataGlobal& global)
 {
     //
     // Consume (collect requirements)
@@ -45,40 +45,44 @@ sim::SimulationDataPoint Village::iterate()
     for (auto& res : m_residents) {
         if(res->is_dead()) { res->remove_relations(); }
     }
-
+    for (auto r : m_residents) {
+        if (r->is_dead()) { r->remove_relations(); }
+    }
     std::erase_if(m_residents, [](const std::shared_ptr<Resident>& r) { return r->is_dead(); });
     std::erase_if(m_residents_m, [](const std::shared_ptr<Resident>& r) { return r->is_dead(); });
     std::erase_if(m_residents_f, [](const std::shared_ptr<Resident>& r) { return r->is_dead(); });
-    std::erase_if(m_couples, [](const auto& r) { return r.first->is_dead() || r.second->is_dead(); });
+    std::erase_if(m_couples, [](const auto& p) { return p.first->is_dead() || p.second->is_dead(); });
 
-    if(tools::RandomEngine::get_instance().get_random_bool(VillageConfig::get_config().population.couple_creation_probability_per_day)) {
-        auto f = m_residents_f[tools::RandomEngine::get_instance().get_random_uint(0, m_residents_f.size() - 1)];
+    if (tools::RandomEngine::get_instance().get_random_bool(VillageConfig::get_config().population.couple_creation_probability_per_day)) {
         auto m = m_residents_m[tools::RandomEngine::get_instance().get_random_uint(0, m_residents_m.size() - 1)];
+        auto f = m_residents_f[tools::RandomEngine::get_instance().get_random_uint(0, m_residents_f.size() - 1)];
 
-        if(!f->has_spouse() && !m->has_spouse() &&
-            f->get_age_years() >= VillageConfig::get_config().population.min_couple_age &&
-            m->get_age_years() >=  VillageConfig::get_config().population.min_couple_age &&
-            std::abs(static_cast<std::int64_t>(f->get_age_years() - m->get_age_years())) <= VillageConfig::get_config().population.diference_couple_age) { 
-                VSA_LOG_INFO("village", "Couple creation initialized.");
-                f->add_spouse(m);
-                m->add_spouse(f);
-                m_couples.push_back({m, f});
+        if (!m->has_partner() && !f->has_partner() &&
+            m->get_age_years() > VillageConfig::get_config().population.min_couple_creation_age_years &&
+            f->get_age_years() > VillageConfig::get_config().population.min_couple_creation_age_years &&
+            std::abs(static_cast<std::int64_t>(m->get_age_years() - f->get_age_years())) <= VillageConfig::get_config().population.max_couple_creation_age_diff_years) {
+            m->add_partner(f);
+            f->add_partner(m);
+            m_couples.emplace_back(m, f);
         }
     }
 
-    if(m_couples.size() > 0 && tools::RandomEngine::get_instance().get_random_bool(VillageConfig::get_config().population.child_creation_probability_per_day)) {
+    if (m_couples.size() > 0 && tools::RandomEngine::get_instance().get_random_bool(VillageConfig::get_config().population.child_creation_probability_per_day)) {
         auto p = m_couples[tools::RandomEngine::get_instance().get_random_uint(0, m_couples.size() - 1)];
         const auto& residents_ids = village::EntitiesRegistry::get_instance().get_residents_ids();
-        auto c = village::ResidentFactory::create_resident(
-                 residents_ids[tools::RandomEngine::get_instance().get_random_uint(0, residents_ids.size() - 1)],
-                 tools::RandomEngine::get_instance().get_random_uint(0, 1), 0);
-        if(p.first->is_male()) { c->add_father(p.first); c->add_mother(p.second); }
-        else { c->add_mother(p.first); c->add_father(p.second); }
+        auto c = ResidentFactory::create_resident(
+            residents_ids[tools::RandomEngine::get_instance().get_random_uint(0, residents_ids.size() - 1)],
+            tools::RandomEngine::get_instance().get_random_uint(0, 1), 0);
         p.first->add_child(c);
         p.second->add_child(c);
-        if(c->is_male()) { m_residents_m.push_back(c); }
-        else { m_residents_f.push_back(c); }
+        if (p.first->is_male()) { c->add_father(p.first);  c->add_mother(p.second); }
+        else { c->add_mother(p.first);  c->add_father(p.second); }
         m_residents.push_back(c);
+        if (c->is_male()) { m_residents_m.emplace_back(c); }
+        else { m_residents_f.emplace_back(c); }
+
+        global.m_avg_first_child_age += p.first->get_age_years() + p.second->get_age_years();
+        global.m_avg_first_child_age /= 3;
     }
 
     // Generate statistics data
@@ -86,24 +90,19 @@ sim::SimulationDataPoint Village::iterate()
     p.m_population = m_residents.size();
     p.m_males = m_residents_m.size();
     p.m_females = m_residents_f.size();
-    p.m_couples = m_couples.size();
+    p.m_couples_count = m_couples.size();
 
-    std::size_t count_of_resident_with_children = 0;
-
+    std::size_t residents_with_children_count = 0;
     for (const auto& resident : m_residents) {
-        {
-            ZoneScopedN("Global Sim Statistic");
+        if (resident->get_children_count() > 0) { residents_with_children_count++; }
 
-            if(resident->get_children_count()) { count_of_resident_with_children++; }
-
-            p.m_avg_age_years += resident->get_age_years();
-            p.m_count_by_resident[resident->get_id()]++;
-            p.m_avg_children_count += resident->get_children_count();
-        }
+        p.m_avg_age_years += resident->get_age_years();
+        p.m_avg_children_count += resident->get_children_count();
+        p.m_count_by_resident[resident->get_id()]++;
     }
+    p.m_avg_children_count_unique = p.m_avg_children_count / (residents_with_children_count ? residents_with_children_count : 1);
+    p.m_avg_children_count /= m_residents.size() ? m_residents.size() : 1;
     p.m_avg_age_years /= m_residents.size() ? m_residents.size() : 1;
-    p.m_avg_children_count_inclusive = 1.0 * p.m_avg_children_count / (count_of_resident_with_children ? count_of_resident_with_children : 1);
-    p.m_avg_children_count /= 1.0 * (m_residents.size() ? m_residents.size() : 1);
 
     return p;
 }

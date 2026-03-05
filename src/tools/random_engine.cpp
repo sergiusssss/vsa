@@ -39,12 +39,9 @@ std::int64_t RandomEngine::get_random_int(std::int64_t min, std::int64_t max)
 
 bool RandomEngine::get_random_bool(float true_probability)
 {
-    {
-        ZoneScopedN("Random Engine Bool");
-        if (true_probability > 1) { VSA_LOG_INFO("tools", "Incorrect probability (> 0)."); }
-        std::bernoulli_distribution d(true_probability);
-        return d(m_gen);
-    }
+    if (true_probability > 1) { VSA_LOG_INFO("tools", "Incorrect probability (> 0)."); }
+    std::bernoulli_distribution d(true_probability);
+    return d(m_gen);
 }
 
 } // tools
