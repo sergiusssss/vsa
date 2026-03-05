@@ -116,6 +116,12 @@ float get_death_today(void* data, int idx)
 
     return sim.get_data().get_points()[idx].m_death_today;
 }
+float get_fertility_today(void* data, int idx)
+{
+    auto& sim = *reinterpret_cast<sim::Simulation*>(data);
+
+    return sim.get_data().get_points()[idx].m_fer_tility_today;
+}
 
 void MainWindow::render()
 {
@@ -208,6 +214,7 @@ void MainWindow::render()
             ImGui::PlotHistogram("Average children count", &get_avg_children_count, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
             ImGui::PlotHistogram("Average children count (unique)", &get_avg_children_count_unique, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
             ImGui::PlotHistogram("Death today", &get_death_today, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
+            ImGui::PlotHistogram("Fertility today", &get_fertility_today, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
             ImGui::PopItemWidth();
             ImGui::Text("Note: X axis is in days. Year is 365 days. Age is in 10 years.");
             ImGui::TreePop();
