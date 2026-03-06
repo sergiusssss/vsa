@@ -122,6 +122,18 @@ float get_fertility_today(void* data, int idx)
 
     return sim.get_data().get_points()[idx].m_fer_tility_today;
 }
+float get_birth_death_diff(void* data, int idx)
+{
+    auto& sim = *reinterpret_cast<sim::Simulation*>(data);
+
+    return sim.get_data().get_points()[idx].m_birth_death_diff;
+}
+float get_birth_death_ratio(void* data, int idx)
+{
+    auto& sim = *reinterpret_cast<sim::Simulation*>(data);
+
+    return sim.get_data().get_points()[idx].m_birth_death_ratio;
+}
 
 void MainWindow::render()
 {
@@ -215,6 +227,8 @@ void MainWindow::render()
             ImGui::PlotHistogram("Average children count (unique)", &get_avg_children_count_unique, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
             ImGui::PlotHistogram("Death today", &get_death_today, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
             ImGui::PlotHistogram("Fertility today", &get_fertility_today, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
+            ImGui::PlotHistogram("Birth - Death difference", &get_birth_death_diff, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
+            ImGui::PlotHistogram("Birth / Death ratio", &get_birth_death_ratio, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
             ImGui::PopItemWidth();
             ImGui::Text("Note: X axis is in days. Year is 365 days. Age is in 10 years.");
             ImGui::TreePop();

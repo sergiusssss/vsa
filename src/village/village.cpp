@@ -106,6 +106,13 @@ sim::SimulationDataPoint Village::iterate(sim::SimulationDataGlobal& global)
     p.m_avg_children_count /= m_residents.size() ? m_residents.size() : 1;
     p.m_avg_age_years /= m_residents.size() ? m_residents.size() : 1;
     p.m_fer_tility_today = births_today;
+    p.m_birth_death_diff = births_today - death_today;
+    if(death_today == 0){
+        p.m_birth_death_ratio = births_today;
+    }
+    else{
+        p.m_birth_death_ratio = births_today/death_today;
+    }
 
     return p;
 }
