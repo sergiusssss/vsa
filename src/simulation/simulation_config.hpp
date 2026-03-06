@@ -2,8 +2,10 @@
 
 #include <cstddef>
 #include <cstdint>
-#include <map>
+
 #include <string>
+#include <map>
+
 
 namespace vsa::sim {
 
@@ -15,10 +17,12 @@ struct SimulationConfig
 
     struct Population
     {
-        std::size_t initial_population = 2000;
+        std::int32_t initial_population = 2000;
 
         std::int32_t initial_min_age = 20;
         std::int32_t initial_max_age = 60;
+
+        std::int32_t initial_max_children = 4;
 
         float percentage_of_women = 50.f;
         float percentage_of_men = 50.f;

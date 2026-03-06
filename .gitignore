@@ -3,4 +3,12 @@
 
 cmake-build-*/
 buildx/
+
+
+.vs/
+.vscode/
 build/
+vsa
+
+build/
+

@@ -4,12 +4,15 @@
 
 #include "village.hpp"
 
-#include "entities_registry.hpp"
-#include "village_config.hpp"
-#include "residents/resident_factory.hpp"
-#include "tools/random_engine.hpp"
+#include <cmath>
 
-#include <utility>
+#include <tracy/Tracy.hpp>
+
+#include <tools/random_engine.hpp>
+#include <tools/logger.hpp>
+#include <village/village_config.hpp>
+#include <village/residents/resident_factory.hpp>
+#include <village/entities_registry.hpp>
 
 namespace vsa {
 namespace village {
@@ -30,14 +33,20 @@ sim::SimulationDataPoint Village::iterate(sim::SimulationDataGlobal& global)
     // Consume (collect requirements)
     // Eat
     // Produce
+    sim::SimulationDataPoint p;
 
     for (std::size_t i = 0; i < m_residents.size(); ++i) {
-        auto& resident = m_residents.at(i);
-        resident->iterate();
+        {
+            ZoneScopedN("Global Sim Iterate");
+            auto& resident = m_residents.at(i);
+            resident->iterate();
+        }
     }
-    for (auto r : m_residents) {
-        if (r->is_dead()) { r->remove_relations(); }
+
+    for (auto& res : m_residents) {
+        if(res->is_dead()) { res->remove_relations(); p.m_dead++; global.m_total_dead++; }
     }
+
     std::erase_if(m_residents, [](const std::shared_ptr<Resident>& r) { return r->is_dead(); });
     std::erase_if(m_residents_m, [](const std::shared_ptr<Resident>& r) { return r->is_dead(); });
     std::erase_if(m_residents_f, [](const std::shared_ptr<Resident>& r) { return r->is_dead(); });
@@ -58,25 +67,27 @@ sim::SimulationDataPoint Village::iterate(sim::SimulationDataGlobal& global)
     }
 
     if (m_couples.size() > 0 && tools::RandomEngine::get_instance().get_random_bool(VillageConfig::get_config().population.child_creation_probability_per_day)) {
-        auto p = m_couples[tools::RandomEngine::get_instance().get_random_uint(0, m_couples.size() - 1)];
+        auto par = m_couples[tools::RandomEngine::get_instance().get_random_uint(0, m_couples.size() - 1)];
         const auto& residents_ids = village::EntitiesRegistry::get_instance().get_residents_ids();
         auto c = ResidentFactory::create_resident(
             residents_ids[tools::RandomEngine::get_instance().get_random_uint(0, residents_ids.size() - 1)],
             tools::RandomEngine::get_instance().get_random_uint(0, 1), 0);
-        p.first->add_child(c);
-        p.second->add_child(c);
-        if (p.first->is_male()) { c->add_father(p.first);  c->add_mother(p.second); }
-        else { c->add_mother(p.first);  c->add_father(p.second); }
+        
+        par.first->add_child(c);
+        par.second->add_child(c);
+        p.m_born++;
+        global.m_total_born++;
+        if (par.first->is_male()) { c->add_father(par.first);  c->add_mother(par.second); }
+        else { c->add_mother(par.first);  c->add_father(par.second); }
         m_residents.push_back(c);
         if (c->is_male()) { m_residents_m.emplace_back(c); }
         else { m_residents_f.emplace_back(c); }
 
-        global.m_avg_first_child_age += p.first->get_age_years() + p.second->get_age_years();
+        global.m_avg_first_child_age += par.first->get_age_years() + par.second->get_age_years();
         global.m_avg_first_child_age /= 3;
     }
 
     // Generate statistics data
-    sim::SimulationDataPoint p;
     p.m_population = m_residents.size();
     p.m_males = m_residents_m.size();
     p.m_females = m_residents_f.size();

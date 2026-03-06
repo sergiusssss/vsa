@@ -1,17 +1,13 @@
-//
-// Created by Serhii Pustovit on 30.11.2025.
-//
+#pragma once
 
-#ifndef VILLAGE_TOOL_SICKLE_HPP
-#define VILLAGE_TOOL_SICKLE_HPP
+#include <string>
 
-namespace vsa {
-namespace village {
+namespace vsa::village {
 
-class ToolSickle
-{};
+class ToolSickle {
+public:
+    static std::string get_id() { return "i_sickle"; }
+    static std::string get_name() { return "Sickle"; }
+};
 
-} // village
-} // vsa
-
-#endif // VILLAGE_TOOL_SICKLE_HPP
+}

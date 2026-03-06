@@ -13,7 +13,7 @@ public:
     Resident() = delete;
     explicit Resident(bool is_male, std::size_t age_days);
 
-    virtual ~Resident() = default;
+    virtual ~Resident();
 
     virtual std::string get_id() = 0;
     virtual std::string get_name() = 0;
@@ -29,6 +29,7 @@ public:
     [[nodiscard]] bool is_dead() const { return m_is_dead; }
     [[nodiscard]] std::size_t get_age_days() const { return m_age_days; }
     [[nodiscard]] std::size_t get_age_years() const { return m_age_days / 365; }
+    [[nodiscard]] std::size_t get_children_count() const { return m_children.size(); }
 
     std::size_t get_children_count() {return m_children.size(); }
     bool has_partner() {return m_partner != nullptr; }

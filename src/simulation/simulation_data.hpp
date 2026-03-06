@@ -16,11 +16,16 @@ struct SimulationDataPoint
     float m_avg_children_count = 0;
     float m_avg_children_count_unique = 0;
     std::map<std::string, std::size_t> m_count_by_resident;
+    std::size_t m_couples = 0;
+    std::size_t m_dead = 0;
+    std::size_t m_born = 0;
 };
 
 struct SimulationDataGlobal
 {
     std::size_t m_avg_first_child_age = 0;
+    std::size_t m_total_dead = 0;
+    std::size_t m_total_born = 0;
 };
 
 class SimulationData

@@ -1,5 +1,7 @@
 #include "main_window.hpp"
 
+#include <string>
+
 #include <imgui.h>
 #include <imgui_neo_sequencer.h>
 
@@ -109,6 +111,20 @@ float get_avg_children_count_unique(void* data, int idx)
     return sim.get_data().get_points()[idx].m_avg_children_count_unique;
 }
 
+float get_dead_people(void* data, int idx)
+{
+    auto& sim = *reinterpret_cast<sim::Simulation*>(data);
+
+    return sim.get_data().get_points()[idx].m_dead;
+}
+
+float get_born_people(void* data, int idx)
+{
+    auto& sim = *reinterpret_cast<sim::Simulation*>(data);
+
+    return sim.get_data().get_points()[idx].m_born;
+}
+
 void MainWindow::render()
 {
     ImGuiIO& io = ImGui::GetIO();
@@ -184,6 +200,8 @@ void MainWindow::render()
         if (ImGui::TreeNode("Global data")) {
             const auto& global = m_simulation->get_data().get_global();
             ImGui::Text("Average child creating age (years): %d", global.m_avg_first_child_age);
+            ImGui::Text("Total dead people: %d", global.m_total_dead);
+            ImGui::Text("Total born people: %d", global.m_total_born);
             ImGui::TreePop();
         }
 
@@ -197,12 +215,14 @@ void MainWindow::render()
             ImGui::PlotHistogram("Couples count", &get_couples, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
             ImGui::PlotHistogram("Average children count", &get_avg_children_count, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
             ImGui::PlotHistogram("Average children count (unique)", &get_avg_children_count_unique, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
+            ImGui::PlotHistogram("Dead People", &get_dead_people, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
+            ImGui::PlotHistogram("Born People", &get_born_people, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
             ImGui::PopItemWidth();
             ImGui::TreePop();
         }
 
         if (ImGui::BeginNeoSequencer("Sequencer", &m_current_day, &m_start_day, &m_end_day)) {
-            // Timeline code here
+            
             ImGui::EndNeoSequencer();
         }
     }

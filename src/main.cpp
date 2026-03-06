@@ -9,6 +9,7 @@
 
 #include <village/entities_registry.hpp>
 
+
 std::unique_ptr<vsa::VillageApp> app;
 
 void signal_handler(int signal)
@@ -19,6 +20,7 @@ void signal_handler(int signal)
 
 int main(int, char**)
 {
+
     auto r = vsa::village::EntitiesRegistry::get_instance().get_residents();
     for (auto rr : r) {
         std::cout << rr.first << ": " << rr.second.name << std::endl;

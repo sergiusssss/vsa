@@ -1,10 +1,12 @@
 #include "simulation_controller.hpp"
 
 #include "village/entities_registry.hpp"
+#include "tracy/Tracy.hpp"
 
 #include <mutex>
 #include <random>
 #include <utility>
+#include <random>
 
 #include <tools/logger.hpp>
 #include <tools/random_engine.hpp>
@@ -53,8 +55,11 @@ bool SimulationController::run()
 
 void SimulationController::register_callback_listener(std::shared_ptr<CallbackListener> listener)
 {
-    std::lock_guard lg(m_listener_mtx);
-    m_listeners.push_back(std::move(listener));
+    {
+        ZoneScopedN("Sim Listener Push");
+        std::lock_guard lg(m_listener_mtx);
+        m_listeners.push_back(std::move(listener));
+    }
 }
 
 std::size_t SimulationController::simulate(const SimulationConfig& config)
@@ -134,7 +139,6 @@ void SimulationController::working_thread()
                 avg_time_sum = 0;
             }
         }
-
         SimulationData data(std::move(points), std::move(global));
 
         auto simulation = std::make_shared<Simulation>(config, data);
@@ -143,7 +147,7 @@ void SimulationController::working_thread()
             std::lock_guard lg(m_listener_mtx);
             for (auto l : m_listeners) { l->on_simulation(0, simulation); }
         }
-
+        
         VSA_LOG_INFO("sim_ctrl", "New simulation processing finished.");
     }
 

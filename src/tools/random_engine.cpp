@@ -2,26 +2,39 @@
 
 #include <tools/logger.hpp>
 
+#include <tracy/Tracy.hpp>
+
 namespace vsa::tools {
 
 RandomEngine& RandomEngine::get_instance()
 {
-    static RandomEngine instance;
-    return instance;
+    {
+        ZoneScopedN("Random Engine Instance");
+        static RandomEngine instance;
+        return instance;
+    }
 }
 
 std::size_t RandomEngine::get_random_uint(std::size_t min, std::size_t max)
 {
-    std::uniform_int_distribution d(min, max);
+    {
+        ZoneScopedN("Random Engine UInt");
 
-    return d(m_gen);
+        std::uniform_int_distribution d(min, max);
+
+        return d(m_gen);
+    }
 }
 
 std::int64_t RandomEngine::get_random_int(std::int64_t min, std::int64_t max)
 {
-    std::uniform_int_distribution d(min, max);
+    {
+        ZoneScopedN("Random Engine Int");
 
-    return d(m_gen);
+        std::uniform_int_distribution d(min, max);
+
+        return d(m_gen);
+    }
 }
 
 bool RandomEngine::get_random_bool(float true_probability)
