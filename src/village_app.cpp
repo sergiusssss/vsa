@@ -32,6 +32,7 @@ bool VillageApp::init()
     m_renderer->register_window(main_window);
     m_renderer->register_window(conf_window);
     //m_renderer->register_window(std::make_shared<ui::TestWindow>());
+
     VSA_LOG_INFO("app", "Initialization finished.");
     return true;
 }

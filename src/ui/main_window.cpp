@@ -1,5 +1,7 @@
 #include "main_window.hpp"
-
+#include <vector>
+#include <algorithm>
+#include <random>
 #include <imgui.h>
 #include <imgui_neo_sequencer.h>
 
@@ -108,6 +110,30 @@ float get_avg_children_count_unique(void* data, int idx)
 
     return sim.get_data().get_points()[idx].m_avg_children_count_unique;
 }
+float get_death_today(void* data, int idx)
+{
+    auto& sim = *reinterpret_cast<sim::Simulation*>(data);
+
+    return sim.get_data().get_points()[idx].m_death_today;
+}
+float get_fertility_today(void* data, int idx)
+{
+    auto& sim = *reinterpret_cast<sim::Simulation*>(data);
+
+    return sim.get_data().get_points()[idx].m_fer_tility_today;
+}
+float get_birth_death_diff(void* data, int idx)
+{
+    auto& sim = *reinterpret_cast<sim::Simulation*>(data);
+
+    return sim.get_data().get_points()[idx].m_birth_death_diff;
+}
+float get_birth_death_ratio(void* data, int idx)
+{
+    auto& sim = *reinterpret_cast<sim::Simulation*>(data);
+
+    return sim.get_data().get_points()[idx].m_birth_death_ratio;
+}
 
 void MainWindow::render()
 {
@@ -177,6 +203,8 @@ void MainWindow::render()
             ImGui::Text("Couples count: %d", current_p.m_couples_count);
             ImGui::Text("Average children count: %d", current_p.m_avg_children_count);
             ImGui::Text("Average children count unique: %d", current_p.m_avg_children_count_unique);
+            ImGui::Text("Death today: %d", current_p.m_death_today);
+            ImGui::Text("Fertility today: %d", current_p.m_fer_tility_today);
 
             ImGui::TreePop();
         }
@@ -197,7 +225,12 @@ void MainWindow::render()
             ImGui::PlotHistogram("Couples count", &get_couples, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
             ImGui::PlotHistogram("Average children count", &get_avg_children_count, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
             ImGui::PlotHistogram("Average children count (unique)", &get_avg_children_count_unique, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
+            ImGui::PlotHistogram("Death today", &get_death_today, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
+            ImGui::PlotHistogram("Fertility today", &get_fertility_today, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
+            ImGui::PlotHistogram("Birth - Death difference", &get_birth_death_diff, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
+            ImGui::PlotHistogram("Birth / Death ratio", &get_birth_death_ratio, m_simulation.get(), m_simulation->get_data().get_points().size(), 0, nullptr, FLT_MAX, FLT_MAX, ImVec2(0.0 , 160));
             ImGui::PopItemWidth();
+            ImGui::Text("Note: X axis is in days. Year is 365 days. Age is in 10 years.");
             ImGui::TreePop();
         }
 
@@ -205,6 +238,8 @@ void MainWindow::render()
             // Timeline code here
             ImGui::EndNeoSequencer();
         }
+
+       
     }
 
     if (disabled) { ImGui::EndDisabled(); }

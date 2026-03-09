@@ -6,6 +6,10 @@
 
 #include <tools/logger.hpp>
 #include <village_app.hpp>
+#include <village/tools/tool_sickle.hpp>
+#include <village/tools/tool_triphammer.hpp>
+
+#include <village/entities_registry.hpp>
 
 #include <village/entities_registry.hpp>
 

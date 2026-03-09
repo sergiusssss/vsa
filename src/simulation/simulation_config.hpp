@@ -34,13 +34,19 @@ struct SimulationConfig
         std::int32_t max_child_creation_age_years = 50;
     };
     Population population;
-
     struct Resident
     {
         float initial_percentage = 0.05f;
         float become_probability = 0.05f;
     };
-    std::map<std::string, Resident> residents;
+        std::map<std::string, Resident> residents;
+
+    struct Tool
+    {
+        float initial_percentage = 0.05f;
+        float become_probability = 0.05f;
+    };
+        std::map<std::string, Tool> tools;
 };
 
 }

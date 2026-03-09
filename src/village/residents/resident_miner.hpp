@@ -3,8 +3,8 @@
 #include <functional>
 #include <memory>
 #include <string>
-
 #include <village/resident.hpp>
+
 
 namespace vsa::village {
 
